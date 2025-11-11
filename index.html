@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <header class="fixed w-full z-2 top-0 p-[20px]">
+      <div
+        class="container mx-auto px-[20px] flex items-center justify-between"
+      >
+        <input
+          required
+          type="search"
+          placeholder="F.I.SH"
+          class="border-[3px] border-[gray] max-w-[600px] w-full p-3 rounded-[10px] pl-[20px] font-bold"
+        />
+        <div class="flex items-center justify-center gap-[10px]">
+          <form class="max-w-[270px]">
+            <!-- <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label> -->
+            <select
+              id="countries"
+              class="bg-[blue] font-bold rounded-md block w-full p-3 text-[20px] text-white"
+            >
+              <option selected>Choose position type?</option>
+              <option value="Junior">Junior</option>
+              <option value="Middle">Middle</option>
+              <option value="Senior">Senior</option>
+            </select>
+          </form>
+
+          <form class="max-w-[270px]">
+            <!-- <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label> -->
+            <select
+              id="countries"
+              class="bg-[gray] font-bold rounded-md block w-full p-3 text-[20px] text-white"
+            >
+              <option selected>Choose address?</option>
+              <option value="Toshkent">Toshkent</option>
+              <option value="Qashqadaryo">Qashqadaryo</option>
+              <option value="Samarqand">Samarqand</option>
+              <option value="Surxondaryo">Surxondaryo</option>
+              <option value="Jizzax">Jizzax</option>
+              <option value="Namangan">Namangan</option>
+              <option value="Andijon">Andijon</option>
+              <option value="Farg'ona">Farg'ona</option>
+              <option value="Sirdaryo">Sirdaryo</option>
+            </select>
+          </form>
+
+          <button
+          id="add-btn"
+            class="bg-[green] text-[16px] text-white whitespace-nowrap p-3 font-bold rounded-md cursor-pointer"
+          >
+            Add Students
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="relative mt-[90px] container mx-auto p-[20px] overflow-x-auto">
+      <table
+        class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+      >
+        <thead
+          class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+        >
+          <tr>
+            <th scope="col" class="px-6 py-3">No</th>
+            <th scope="col" class="px-6 py-3">FirstName</th>
+            <th scope="col" class="px-6 py-3">LastName</th>
+            <th scope="col" class="px-6 py-3">Address</th>
+            <th scope="col" class="px-6 py-3">Date of Birthday</th>
+            <th scope="col" class="px-6 py-3">Position</th>
+            <th scope="col" class="px-6 py-3">Position type</th>
+            <th scope="col" class="px-6 py-3">Salary</th>
+            <th scope="col" class="px-6 py-3">isMarried</th>
+            <th scope="col" class="px-6 py-3">Action</th>
+          </tr>
+        </thead>
+        <tbody id="tbody">
+          
+        </tbody>
+      </table>
+    </div>
+
+    <div
+    id="outer-modal"
+      class="fixed hidden w-full h-full top-0 left-0 flex items-center justify-center bg-[black]/40"
+    >
+      <form id="inner-modal" class="max-w-[600px] w-full mx-auto bg-white p-[30px]">
+        <div class="relative mb-5 group">
+          <div class="relative z-0 w-full mb-5 group">
+            <h1 class="font-bold text-[20px] p-[20px] text-center">
+              O'quvchining ma'lumotlari:
+            </h1>
+            <label class="font-bold" for="">Ismni kiriting:</label>
+            <input
+              class="border-2 w-full mt-3 p-2 text-[18px] font-bold rounded-md cursor-pointer focus-outline-none focus:ring-2 focus:ring-blue-500"
+              type="firstname"
+              placeholder="First name:"
+            />
+          </div>
+
+          <div class="relative z-0 w-full mb-5 group">
+            <label class="font-bold" for="">Familyangizni kiriting:</label>
+            <input
+              class="border-2 w-full mt-3 p-2 text-[18px] font-bold rounded-md cursor-pointer focus-outline-none focus:ring-2 focus:ring-blue-500"
+              type="firstname"
+              placeholder="Last Name:"
+            />
+          </div>
+
+          <div class="relative z-0 w-full mb-5 group">
+            <label class="font-bold mb-2 block" for="">Manzilni tanlang:</label>
+            <select
+              id="countries"
+              class="border-2 text-[black] font-bold rounded-md block w-full p-2.5 text-[18px]"
+            >
+              <option selected>Choose address?</option>
+              <option value="Toshkent">Toshkent</option>
+              <option value="Qashqadaryo">Qashqadaryo</option>
+              <option value="Samarqand">Samarqand</option>
+              <option value="Surxondaryo">Surxondaryo</option>
+              <option value="Jizzax">Jizzax</option>
+              <option value="Namangan">Namangan</option>
+              <option value="Andijon">Andijon</option>
+              <option value="Farg'ona">Farg'ona</option>
+              <option value="Sirdaryo">Sirdaryo</option>
+            </select>
+          </div>
+
+          <div class="flex items-center gap-[20px]">
+            <div class="relative z-0 w-full group">
+              <label class="font-bold mb-2 block" for="">Tug'ilgan kuni:</label>
+              <input
+                class="w-full border-2 p-2 rounded-md text-[18px] font-bold rounded-md cursor-pointer focus-outline-none focus:ring-2 focus:ring-blue-500"
+                type="date"
+              />
+            </div>
+
+            <div class="relative z-0 w-full group">
+              <label class="font-bold mb-2 block" for="">Lavozim</label>
+              <select
+                class="w-full border-2 rounded-md p-2.5 text-[18px] font-bold focus-outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option>React</option>
+                <option>Frontend</option>
+                <option>Backend</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-[20px]">
+            <div class="relative z-0 mt-4 w-full group">
+              <label class="font-bold mb-2 block" for="">Lavozim turi:</label>
+              <select
+                class="w-full border-2 rounded-md p-2.5 text-[18px] font-bold focus-outline-none focus:ring-2 focus:ring-blue-500"
+              >
+                <option>Junior</option>
+                <option>Middle</option>
+                <option>Senior</option>
+              </select>
+            </div>
+
+            <div class="relative z-0 w-full mt-4 group">
+              <label class="font-bold mb-2 block" for="">Maoshi:</label>
+              <input
+                class="border-2 w-full p-2 text-[18px] font-bold rounded-md cursor-pointer focus-outline-none focus:ring-2 focus:ring-blue-500"
+                type="number"
+                placeholder=""
+              />
+            </div>
+          </div>
+        </div>
+
+        <label class="flex items-center gap-[10px] mb-4">
+          <input
+            type="checkbox"
+            class="w-4 h-5 accent-blue-600 cursor-pointer"
+          />
+          <span class="text-[18px] font-bold">Uylanganmi?</span>
+        </label>
+
+        <div class="flex justify-end gap-3">
+          <button
+            class="bg-[gray] text-white px-4 py-2 rounded-md cursor-pointer"
+          >
+            Yopish
+          </button>
+          <button
+          id="btn"
+            class="bg-[green] text-white px-4 py-2 rounded-md cursor-pointer"
+          >
+            Qo'shish
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <script src="./js/main.js"></script>
+  </body>
+</html>
