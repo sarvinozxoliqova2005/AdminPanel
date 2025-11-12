@@ -7,35 +7,35 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body>
-    <header class="fixed w-full z-2 top-0 p-[20px]">
+    <header class="fixed w-full z-2 top-0 p-[20px] border-4 shadow shadow-xl border-white bg-white">
       <div
-        class="container mx-auto px-[20px] flex items-center justify-between"
+        class="container mx-auto px-[20px] flex items-center justify-between max-[1055px]:flex-col"
       >
         <input
           required
           type="search"
           placeholder="F.I.SH"
-          class="border-[3px] border-[gray] max-w-[600px] w-full p-3 rounded-[10px] pl-[20px] font-bold"
+          class="border-[3px] border-[gray] max-w-[600px] max-[1050px]:max-w-[400px] max-[250px]:max-w-[400px] w-full p-3 rounded-[10px] pl-[20px] font-bold"
         />
-        <div class="flex items-center justify-center gap-[10px]">
-          <form class="max-w-[270px]">
+        <div class="flex items-center justify-center gap-[10px] max-[1055px]:py-5 max-[700px]:flex-col">
+          <form class="w-full">
             <!-- <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label> -->
-            <select
+            <select 
               id="countries"
-              class="bg-[blue] font-bold rounded-md block w-full p-3 text-[20px] text-white"
+              class="bg-[blue] h-[55px] font-bold px-4 rounded-md text-[16px] text-white cursor-pointer"
             >
-              <option selected>Choose position type?</option>
+              <option selected>Lavozim turini tanlang</option>
               <option value="Junior">Junior</option>
               <option value="Middle">Middle</option>
               <option value="Senior">Senior</option>
             </select>
           </form>
 
-          <form class="max-w-[270px]">
+          <form class=" px-5  w-full h-full">
             <!-- <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label> -->
             <select
               id="countries"
-              class="bg-[gray] font-bold rounded-md block w-full p-3 text-[20px] text-white"
+              class="bg-[gray] font-bold h-[55px] rounded-md  block w-full p-3 text-[16px] text-white cursor-pointer"
             >
               <option selected>Choose address?</option>
               <option value="Toshkent">Toshkent</option>
@@ -60,12 +60,12 @@
       </div>
     </header>
 
-    <div class="relative mt-[90px] container mx-auto p-[20px] overflow-x-auto">
+    <div class="relative mt-[90px] pt-[120px] container mx-auto  overflow-x-auto ">
       <table
-        class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+        class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 max-[1055px]:w-[1000px] "
       >
         <thead
-          class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+          class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 max-[1043px]:w-[800px]"
         >
           <tr>
             <th scope="col" class="px-6 py-3">No</th>
@@ -88,16 +88,16 @@
 
     <div
     id="outer-modal"
-      class="fixed hidden w-full h-full top-0 left-0 flex items-center justify-center bg-[black]/40"
+      class="fixed hidden w-full h-full top-0 left-0 flex items-center justify-center bg-[black]/40 bg-[black]/20 backdrop-blur-sm"
     >
-      <form id="inner-modal" class="max-w-[600px] w-full mx-auto bg-white p-[30px]">
+      <form id="inner-modal" class="max-w-[600px] w-full mx-auto bg-white p-[30px] mt-[90px]" >
         <div class="relative mb-5 group">
           <div class="relative z-0 w-full mb-5 group">
             <h1 class="font-bold text-[20px] p-[20px] text-center">
               O'quvchining ma'lumotlari:
             </h1>
             <label class="font-bold" for="">Ismni kiriting:</label>
-            <input
+            <input required
               class="border-2 w-full mt-3 p-2 text-[18px] font-bold rounded-md cursor-pointer focus-outline-none focus:ring-2 focus:ring-blue-500"
               type="firstname"
               placeholder="First name:"
@@ -106,7 +106,7 @@
 
           <div class="relative z-0 w-full mb-5 group">
             <label class="font-bold" for="">Familyangizni kiriting:</label>
-            <input
+            <input required
               class="border-2 w-full mt-3 p-2 text-[18px] font-bold rounded-md cursor-pointer focus-outline-none focus:ring-2 focus:ring-blue-500"
               type="firstname"
               placeholder="Last Name:"
@@ -114,8 +114,8 @@
           </div>
 
           <div class="relative z-0 w-full mb-5 group">
-            <label class="font-bold mb-2 block" for="">Manzilni tanlang:</label>
-            <select
+            <label  class="font-bold mb-2 block" for="">Manzilni tanlang:</label>
+            <select required
               id="countries"
               class="border-2 text-[black] font-bold rounded-md block w-full p-2.5 text-[18px]"
             >
@@ -135,7 +135,7 @@
           <div class="flex items-center gap-[20px]">
             <div class="relative z-0 w-full group">
               <label class="font-bold mb-2 block" for="">Tug'ilgan kuni:</label>
-              <input
+              <input required
                 class="w-full border-2 p-2 rounded-md text-[18px] font-bold rounded-md cursor-pointer focus-outline-none focus:ring-2 focus:ring-blue-500"
                 type="date"
               />
@@ -143,7 +143,7 @@
 
             <div class="relative z-0 w-full group">
               <label class="font-bold mb-2 block" for="">Lavozim</label>
-              <select
+              <select required
                 class="w-full border-2 rounded-md p-2.5 text-[18px] font-bold focus-outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option>React</option>
@@ -156,7 +156,7 @@
           <div class="flex items-center gap-[20px]">
             <div class="relative z-0 mt-4 w-full group">
               <label class="font-bold mb-2 block" for="">Lavozim turi:</label>
-              <select
+              <select required
                 class="w-full border-2 rounded-md p-2.5 text-[18px] font-bold focus-outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option>Junior</option>
@@ -167,7 +167,7 @@
 
             <div class="relative z-0 w-full mt-4 group">
               <label class="font-bold mb-2 block" for="">Maoshi:</label>
-              <input
+              <input required
                 class="border-2 w-full p-2 text-[18px] font-bold rounded-md cursor-pointer focus-outline-none focus:ring-2 focus:ring-blue-500"
                 type="number"
                 placeholder=""
@@ -177,7 +177,7 @@
         </div>
 
         <label class="flex items-center gap-[10px] mb-4">
-          <input
+          <input 
             type="checkbox"
             class="w-4 h-5 accent-blue-600 cursor-pointer"
           />
@@ -188,13 +188,13 @@
           <button
             class="bg-[gray] text-white px-4 py-2 rounded-md cursor-pointer"
           >
-            Yopish
+            Close
           </button>
           <button
           id="btn"
             class="bg-[green] text-white px-4 py-2 rounded-md cursor-pointer"
           >
-            Qo'shish
+            Add
           </button>
         </div>
       </form>
