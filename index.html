@@ -12,6 +12,7 @@
         class="container mx-auto px-[20px] flex items-center justify-between max-[1055px]:flex-col"
       >
         <input
+        id="search-input"
           required
           type="search"
           placeholder="F.I.SH"
@@ -19,12 +20,11 @@
         />
         <div class="flex items-center justify-center gap-[10px] max-[1055px]:py-5 max-[700px]:flex-col">
           <form class="w-full">
-            <!-- <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label> -->
             <select 
-              id="countries"
+            id="select-group"
               class="bg-[blue] h-[55px] font-bold px-4 rounded-md text-[16px] text-white cursor-pointer"
             >
-              <option selected>Lavozim turini tanlang</option>
+              <option value="All">Lavozim turini tanlang</option>
               <option value="Junior">Junior</option>
               <option value="Middle">Middle</option>
               <option value="Senior">Senior</option>
@@ -32,12 +32,11 @@
           </form>
 
           <form class=" px-5  w-full h-full">
-            <!-- <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label> -->
             <select
-              id="countries"
+            id="select-address"
               class="bg-[gray] font-bold h-[55px] rounded-md  block w-full p-3 text-[16px] text-white cursor-pointer"
             >
-              <option selected>Choose address?</option>
+              <option value="Adress">Choose address?</option>
               <option value="Toshkent">Toshkent</option>
               <option value="Qashqadaryo">Qashqadaryo</option>
               <option value="Samarqand">Samarqand</option>
@@ -60,12 +59,13 @@
       </div>
     </header>
 
-    <div class="relative mt-[90px] pt-[70px] container mx-auto  overflow-x-auto ">
-      <table
-        class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 max-[1055px]:w-[1000px] "
+    <div class="relative mt-[120px]  container mx-auto p-4 overflow-x-auto">
+     <div class="bg-white shadow-lg rounded-xl overflow-hidden">
+       <table
+        class="w-full h-full  text-sm text-left  text-gray-700 dark:text-gray-400  "
       >
         <thead
-          class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 max-[1043px]:w-[800px]"
+          class="text-xs  text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 "
         >
           <tr>
             <th scope="col" class="px-6 py-3">No</th>
@@ -81,22 +81,22 @@
           </tr>
         </thead>
         <tbody id="tbody">
-          
         </tbody>
       </table>
+     </div>
     </div>
 
     <div
     id="outer-modal"
-      class="fixed hidden w-full h-full top-0 left-0 flex items-center justify-center bg-[black]/40 bg-[black]/20 backdrop-blur-sm"
+      class="fixed hidden w-full h-full top-0  left-0 flex items-center justify-center bg-[black]/40 bg-[black]/20 backdrop-blur-sm"
     >
-      <form id="inner-modal" class="max-w-[600px] w-full mx-auto bg-white p-[30px] mt-[90px]" >
+      <form id="inner-modal" class="bg-white shadow-2xl rounded-xl p-8 w-full max-w-[500px] border border-gray-200 relative animate-[fadeIn_0.3s_ease] mt-[100px]">
         <div class="relative mb-5 group">
           <div class="relative z-0 w-full mb-5 group">
             <h1 class="font-bold text-[20px] p-[20px] text-center">
-              O'quvchining ma'lumotlari:
+              Add Students
             </h1>
-            <label class="font-bold" for="">Ismni kiriting:</label>
+            <label class="font-bold font-semibold" for="">FirsNme</label>
             <input required
               class="border-2 w-full mt-3 p-2 text-[18px] font-bold rounded-md cursor-pointer focus-outline-none focus:ring-2 focus:ring-blue-500"
               type="firstname"
@@ -105,7 +105,7 @@
           </div>
 
           <div class="relative z-0 w-full mb-5 group">
-            <label class="font-bold" for="">Familyangizni kiriting:</label>
+            <label class="font-bold" for="">LastName</label>
             <input required
               class="border-2 w-full mt-3 p-2 text-[18px] font-bold rounded-md cursor-pointer focus-outline-none focus:ring-2 focus:ring-blue-500"
               type="firstname"
@@ -114,7 +114,7 @@
           </div>
 
           <div class="relative z-0 w-full mb-5 group">
-            <label  class="font-bold mb-2 block" for="">Manzilni tanlang:</label>
+            <label  class="font-bold mb-2 block" for="">Address</label>
             <select required
               id="countries"
               class="border-2 text-[black] font-bold rounded-md block w-full p-2.5 text-[18px]"
@@ -134,7 +134,7 @@
 
           <div class="flex items-center gap-[20px]">
             <div class="relative z-0 w-full group">
-              <label class="font-bold mb-2 block" for="">Tug'ilgan kuni:</label>
+              <label class="font-bold mb-2 block" for="">Birthday</label>
               <input required
                 class="w-full border-2 p-2 rounded-md text-[18px] font-bold rounded-md cursor-pointer focus-outline-none focus:ring-2 focus:ring-blue-500"
                 type="date"
@@ -181,7 +181,7 @@
             type="checkbox"
             class="w-4 h-5 accent-blue-600 cursor-pointer"
           />
-          <span class="text-[18px] font-bold">Uylanganmi?</span>
+          <span class="text-[18px] font-bold">isMarried?</span>
         </label>
 
         <div class="flex justify-end gap-3">

@@ -1,14 +1,88 @@
 let students = JSON.parse (localStorage.getItem ("students") || "[]");
+let search = document.getElementById ("search-input");
 localStorage.setItem ("students" , JSON.stringify(students));
+let selectGroup = document.getElementById ("select-group");
+let selectAddress = document.getElementById ("select-address");
+let tbody = document.getElementById ("tbody");
+
+search.addEventListener ("input" , function(e) {
+  let searchValue = e.target.value;
+  if(searchValue === " "){
+    showStudents (tbody , students);
+  }else {
+     let studentsSearched = students.filter((el) => 
+      el.FirstName.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    showStudents (tbody , studentsSearched);
+  };
+});
+
+// selectGroup.addEventListener ( "change" , function(e){
+
+//   let selectt = e.target.value
+  
+//   console.log(selectt);
+//   let filtered = selectt === "All"
+//   ? students
+//   : students.filter((e) =>  e.PositionType  === selectt)
+//   console.log(filtered);
+  
+// })
+
+selectGroup.addEventListener("change", (e) => {
+    const selected = e.target.value;
+    const filtered = selected === "All"
+      ? students
+      : students.filter(e => e.PositionType  === selected);
+      
+    if (filtered.length > 0) {
+      showStudents(tbody, filtered);
+    } else {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="3" class="text-center text-[20px] text-black font-bold py-4">
+            Ma'lumot topilmadi!
+          </td>
+        </tr>
+      `;
+    }
+
+    console.log(filtered);
+    
+  });
+
+
+  selectAddress.onchange = () => {
+  let value = selectAddress.value;
+  let filtered = value ? students.filter((el) => el.Address === value) : students;
+  showStudents(tbody, filtered);
+
+  if (filtered.length > 0) {
+      showStudents(tbody, filtered);
+    } else {
+      tbody.innerHTML = `
+        <tr>
+          <td colspan="3" class="text-center text-black text-[20px] font-bold py-4">
+            Ma'lumot topilmadi!
+          </td>
+        </tr>
+      `;
+    }
+
+    console.log(filtered);
+    
+};
+
 
 
 
 let outerModal = document.getElementById ("outer-modal");
 let innerModal = document.getElementById ("inner-modal");
 let addBtn = document.getElementById ("add-btn");
-let tbody = document.getElementById ("tbody");
 let selected = null;
 let btn = document.getElementById ("btn");
+
+
 
 
 addBtn.addEventListener ("click" , function(){
@@ -110,11 +184,14 @@ function showStudents (content , data){
               </button>
             </td>
           </tr>
-        `
+        `; 
+       
     })
-}
+  } ; 
 
-showStudents (tbody , students);
+
+
+showStudents (tbody , filtered);
 
 
 function deleteStudent (id) {
@@ -137,123 +214,3 @@ function edit (id) {
     innerModal[6].value = student.Salary;
     innerModal[7].checked = student.IsMarried;
 }
-
-
-
-
-// let students = [];
-// let editingIndex = -1;
-
-// let modal = document.getElementById ("modal");
-// let modalTitle = document.getElementById ("modalTitle");
-// let openAdd = document.getElementById ("openAdd");
-// let closeModal = document.getElementById ("closeModal");
-// let studentForm = document.getElementById ("studentForm");
-// let saveBtn = document.getElementById ("saveBtn");
-// let tbody = document.getElementById ("studentsTableBody");
-// let searchInput = document.getElementById ("search");
-// let filterPositionType = document.getElementById ("filterPositionType");
-// let filterAddress = document.getElementById ("filterAddress");
-
-
-// let FirstName = document.getElementById ("FirstName");
-// let LastName = document.getElementById ("LastName");
-// let address = document.getElementById ("address");
-// let birthday = document.getElementById ("birthday");
-// let Position = document.getElementById ("position");
-// let PositionType = document.getElementById ("positionType");
-// let Salary = document.getElementById ("salary");
-// let IsMarried = document.getElementById ("isMarried");
-
-// openAdd.addEventListener ("click" , () => openModal ("add"));
-
-
-// closeModal.addEventListener ("click" , closeModal);
-// modal.addEventListener ("click" , (e) => {
-//   if (e.target === modal) closeModal ();
-// });
-
-
-// studentForm.addEventListener ("submit" , (e) => {
-//   e.preventDefault();
-//   let obj = {
-//     FirstName: FirstName.ariaValueMax.trim (),
-//     LastName: LastName.ariaValueMax.trim(),
-//     address:address.value,
-//     birthday:birthday.value,
-//     Position:Position.value,
-//     PositionType:PositionType.value,
-//     Salary:Salary.value,
-//     IsMarried:IsMarried.ariaChecked,
-//   };
-
-//   if (editingIndex === -1) {
-//     students.push (obj);
-//   }else {
-//     students[editingIndex] = obj;
-//   }
-
-//   renderTable ();
-//   closeModal();
-//   studentForm.reset();
-//   editingIndex = -1;
-// });
-
-
-// function renderTable () {
-//   let q = searchInput.value.trim ().toLowerCase();
-//   let fPos = filterPositionType.value;
-//   let fAddr = filterAddress.value;
-
-//   tbody.innerHTML = "";
-//   students.forEach ((s , idx) => {
-//     if (q) {
-//       const combined = (s.FirstName + " " + s.LastName).toLowerCase();
-//       if (!combined.includes (q)) return;
-//     }
-
-//     if (fPos && s.PositionType !== fPos) return;
-//     if (fAddr && s.address !== fAddr) return;
-
-//     let tr = document.createElementN ("tr");
-//     tr.className = "hover:bg-gray-50";
-
-//     tr.innerHTML = `
-//        <tr
-// //             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200"
-// //           >
-// //             <th
-// //               scope="row"
-// //               class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-// //             >
-// //               ${index + 1}
-// //             </th>
-// //             <td class="px-6 py-4">${el.FirstName}</td>
-// //             <td class="px-6 py-4">${el.LastName}</td>
-// //             <td class="px-6 py-4">${el.Address}</td>
-// //             <td class="px-6 py-4">${el.DateofBirthday || "-"}</td>
-// //             <td class="px-6 py-4">${el.Position}</td>
-// //             <td class="px-6 py-4">${el.PositionType}</td>
-// //             <td class="px-6 py-4">${el.Salary ? s.Salary + "$" : "-"}</td>
-// //             <td class="px-6 py-4">${el.IsMarried ? "Ha" : "Yo'q"}</td>
-// //             <td class="px-6 py-4 flex items-center gap-[10px]">
-// //               <button data-action  = "edit" data-index = "${index}" class="px-6 py-2 bg-[green] text-white cursor-pointer">
-// //                 Edit
-// //               </button>
-// //               <button data-action = "deleteStudent" data-index= "${index}" class="px-6 py-2 bg-[red] text-white cursor-pointer">
-// //                 Delete
-// //               </button>
-// //             </td>
-// //           </tr>
-//     `
-
-//     tbody.appendChild(tr);
-//   });
-
-//   tbody.querySelectorAll ("button").forEach (btn => {
-//     let action = btn.getAttribute (data-action);
-//     let index = Number (btn.getAttribute ("data-index"));
-
-//   })
-  
-// }
